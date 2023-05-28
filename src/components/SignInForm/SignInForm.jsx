@@ -12,12 +12,13 @@ export const SignInForm = () => {
     const handleSumbit = e => {
         e.preventDefault();
 
-        dispatch(
+        const login = dispatch(
             signIn({
                 email: e.currentTarget.email.value,
                 password: e.currentTarget.password.value,
             })
         );
+        console.log(login);
     };
 
   return (
