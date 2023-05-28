@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const ContactWrapper = styled.form`
     display: flex;
-    // flex-direction: column;
     justify-content: space-between;
     align-items: baseline;
     gap: 5px;
@@ -20,6 +19,7 @@ export const Label = styled.label`
 export const Input = styled.input`
     width: 70%;
     padding: 6px;
+    border: 0.5px solid grey;
     border-radius: 10px;
     font-size: 14px;
 `;
@@ -27,6 +27,7 @@ export const Input = styled.input`
 export const Button = styled.button`
     margin: auto;
     padding: 6px;
+    border: 0.5px solid grey;
     border-radius: 16px;
     :hover,
     :focus {

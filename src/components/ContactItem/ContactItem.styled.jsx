@@ -7,7 +7,6 @@ export const Contact = styled.li`
     border-radius: 40px;
     display: flex;
     justify-content: space-between;
-    background-color: #8ec8bd;
 `;
 
 export const Avatar = styled.div`
@@ -25,14 +24,14 @@ export const Name = styled.p`
     margin: 0;
     padding: 0;
     text-transform: capitalize;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
 `;
 
 export const Phone = styled.p`
     margin: 0;
     padding: 0;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
 `;
 

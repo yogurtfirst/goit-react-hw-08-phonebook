@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from '../../redux/selectors';
-import { createContact } from '../../redux/action';
+import { getContacts } from '../../redux/contacts/selectors';
+import { createContact } from '../../redux/contacts/action';
 import { ContactWrapper, Label, Input, Button } from './ContactForm.styled';
 
 export const ContactForm = () => {
     const [name, setName] = useState('');
-    const [phone, setPhone] = useState('');
+    const [number, setNumber] = useState('');
     const dispatch = useDispatch();
     const contacts = useSelector(getContacts);
 
@@ -18,7 +18,7 @@ export const ContactForm = () => {
                 setName(value);
                 break;
             case 'number':
-                setPhone(value);
+                setNumber(value);
                 break;
             default:
                 console.error(`Unexpected attribute - ${name}`);
@@ -29,10 +29,10 @@ export const ContactForm = () => {
         e.preventDefault();
 
         if (contacts.items.some(contact => contact.name === name)) alertmessage(name)
-        else addContact({ name, phone });
+        else addContact({ name, number });
 
         setName('');
-        setPhone('');
+        setNumber('');
     };
 
     const alertmessage = name => alert(`${name} is already in contacts`);
@@ -59,7 +59,7 @@ export const ContactForm = () => {
                 title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                 required
                 onChange={onChange}
-                value={phone}
+                value={number}
             />
             <Button type="submit">Add to contact</Button>
         </ContactWrapper>
