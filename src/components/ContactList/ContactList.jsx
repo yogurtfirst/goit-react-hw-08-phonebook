@@ -4,17 +4,21 @@ import { getContacts, getFilter, getLoadingStatus, getErrorStatus } from '../../
 import { deleteContact, fetchContacts } from '../../redux/contacts/action';
 import { ContactItem } from '../ContactItem/ContactItem';
 import { Contacts } from './ContactList.styled';
+import { useNavigate } from 'react-router-dom';
 
 export const ContactList = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate;
     const contacts = useSelector(getContacts);
     const filterState = useSelector(getFilter);
     const isLoading = useSelector(getLoadingStatus);
     const error = useSelector(getErrorStatus);
 
     useEffect(() => {
-        dispatch(fetchContacts());
-    }, [dispatch]);
+        dispatch(fetchContacts())
+            .unwrap()
+            .catch(() => navigate('/login'));
+    }, [dispatch, navigate]);
 
     const removeContact = id => dispatch(deleteContact(id));
 

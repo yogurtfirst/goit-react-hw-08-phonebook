@@ -22,7 +22,10 @@ export const App = () => {
     return isRefreshing ? ( <b>Refreshing user...</b> ) : (
         <Routes>
             <Route path="/" element={<SharedLayout />}>
-            <Route index element={<SignInPage />} />
+            <Route index element={
+                <PrivateRoute>
+                <ContactsPage />
+                </PrivateRoute>} />
             <Route path="contacts" element={
                 <PrivateRoute>
                     <ContactsPage />
