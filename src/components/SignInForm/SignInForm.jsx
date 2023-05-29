@@ -18,7 +18,7 @@ export const SignInForm = () => {
                 password: e.currentTarget.password.value,
             })
         );
-        console.log(login);
+        console.log(login.type);
     };
 
   return (

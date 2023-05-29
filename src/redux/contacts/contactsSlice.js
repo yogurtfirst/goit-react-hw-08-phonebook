@@ -1,6 +1,16 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { createContact, deleteContact, fetchContacts } from './action';
 
+const initialState = {
+    items: [],
+    isLoading: false,
+    error: null,
+};
+
+// const handleReset = () => {
+//     return initialState;
+// };
+
 const handleFulfilled = (state, { payload }) => {
     state.items = payload;
     state.isLoading = false;
@@ -19,10 +29,11 @@ const handlePendidng = state => {
 
 const contactsSlice = createSlice({
     name: 'contacts',
-    initialState: {
-        items: [],
-        isLoading: false,
-        error: null,
+    initialState,
+    reducers: {
+        resetContacts(state) {
+            state.items = initialState.items
+        },
     },
     extraReducers: builder => {
         builder
@@ -59,4 +70,5 @@ const contactsSlice = createSlice({
     },
 });
 
+export const { resetContacts } = contactsSlice.actions;
 export const contactReducer = contactsSlice.reducer;
